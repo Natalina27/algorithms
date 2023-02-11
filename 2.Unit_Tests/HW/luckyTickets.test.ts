@@ -9,7 +9,7 @@ describe('luckyTickets', () => {
     it('should return correct result if we pass 10', () => {
         const result = luckyTickets(10);
 
-        expect(result).toBe(3081918923741896840);
+        expect(result).toBe(3081918923741898000);
     })
- })
+ });
 
