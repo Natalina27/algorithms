@@ -10,7 +10,7 @@ export const binaryPower = (number: number, power: number): number => {
             power /= 2;
         }
     }
-    return +(total * (number ** power)).toFixed(11);
+    return total * (number ** power);
 }
 
 console.log(binaryPower(2, 10)); //1024.0

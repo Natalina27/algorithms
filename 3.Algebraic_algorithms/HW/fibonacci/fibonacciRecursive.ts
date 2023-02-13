@@ -8,3 +8,4 @@ export const fibonacciRecursive = (num: number): number => {
     }
 }
 
+console.log(fibonacciRecursive(10)); //55
