@@ -5,3 +5,4 @@ export const fibonacciBine = (n: number): number => {
 }
 
 console.log(fibonacciBine(10)); //55
+console.log(fibonacciBine(64)); //10610209857723

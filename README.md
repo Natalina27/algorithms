@@ -48,3 +48,22 @@ Self-checking homework assignments using prepared tests
    - Ability to determine complexity classes of algorithms
 2. Algorithm optimization
    - Apply different approaches to speed up problem solving
+
+
+# 4. Basic data structures 
+
+## Lesson objectives
+- write your own implementation of various data structures;
+- compare the effectiveness of different approaches;
+- choose the appropriate data structure for a specific task.
+
+## Summary
+- creating a dynamic array;
+- comparing the effectiveness of different approaches;
+- evaluation of the effectiveness of various operations;
+- stack and queue implementation.
+
+## Competencies
+- Implementation of dynamic arrays
+- Choosing the right structure
+- Comparison of the effectiveness of different approaches
