@@ -48,3 +48,21 @@ Self-checking homework assignments using prepared tests
    - Ability to determine complexity classes of algorithms
 2. Algorithm optimization
    - Apply different approaches to speed up problem solving
+   
+
+# 5. Bit arithmetic
+
+## Lesson objectives
+- work with bit operations;
+- generate bit masks according to the given rules.
+
+## Summary
+- an overview of bit operations;
+- definition of the term bitboard;
+- generation of king moves on a chessboard;
+- counting the number of 1 bits in a number.
+
+## Competencies
+Applying bit operations to solve problems
+- Understanding how bit operations work, know their types
+- Generation of bit masks according to specified rules
