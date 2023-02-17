@@ -49,7 +49,6 @@ Self-checking homework assignments using prepared tests
 2. Algorithm optimization
    - Apply different approaches to speed up problem solving
    
-   
 # 4. Basic data structures 
 
 ## Lesson objectives
