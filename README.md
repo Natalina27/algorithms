@@ -48,8 +48,8 @@ Self-checking homework assignments using prepared tests
    - Ability to determine complexity classes of algorithms
 2. Algorithm optimization
    - Apply different approaches to speed up problem solving
-
-
+   
+   
 # 4. Basic data structures 
 
 ## Lesson objectives
@@ -67,3 +67,32 @@ Self-checking homework assignments using prepared tests
 - Implementation of dynamic arrays
 - Choosing the right structure
 - Comparison of the effectiveness of different approaches
+
+# 5. Bit arithmetic
+
+## Lesson objectives
+- work with bit operations;
+- generate bit masks according to the given rules.
+
+## Summary
+- an overview of bit operations;
+- definition of the term bitboard;
+- generation of king moves on a chessboard;
+- counting the number of 1 bits in a number.
+
+## Competencies
+Applying bit operations to solve problems
+- Understanding how bit operations work, know their types
+- Generation of bit masks according to specified rules
+
+### Useful links:
+> Ход конём по битам. Шахматный Bitboard:
+https://habr.com/ru/company/otus/blog/476510/
+
+>Bitboard Calculator
+https://gekomad.github.io/Cinnamon/BitboardCalculator/
+
+
+
+
+
