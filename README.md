@@ -48,7 +48,7 @@ Self-checking homework assignments using prepared tests
    - Ability to determine complexity classes of algorithms
 2. Algorithm optimization
    - Apply different approaches to speed up problem solving
-   
+
 # 4. Basic data structures 
 
 ## Lesson objectives
@@ -148,6 +148,10 @@ https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 https://en.wikipedia.org/wiki/Shellsort
 ![shell sort](https://cdn.otus.ru/media/private/0c/fc/ShellSort-19350-0cfcbd.png?hash=dPJP6oekzuV2k00qNxYcJw&expires=1677107092)
 
+> Sorting Algorithms Animations
+https://www.toptal.com/developers/sorting-algorithms
+https://visualgo.net/en/sorting
+https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
 
 
