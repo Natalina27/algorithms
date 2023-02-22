@@ -103,8 +103,7 @@ Applying bit operations to solve problems
 - Comparison of complexity of algorithms
 - Analysis of algorithms by criteria
 
-
-### Useful links:
+## Useful links:
 > Сложность алгоритма Евклида
 https://cdn.otus.ru/media/private/ec/f4/%D0%A1%D0%BB%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B0_%D0%95%D0%B2%D0%BA%D0%BB%D0%B8%D0%B4%D0%B0_%D0%9D%D0%9E%D0%94-19350-ecf466.png?hash=kyokQWDyiVJgicnpGZDg-w&expires=1675995474
 
@@ -120,7 +119,12 @@ https://habr.com/ru/company/otus/blog/476510/
 > Bitboard Calculator
 https://gekomad.github.io/Cinnamon/BitboardCalculator/
 
+> Comparison sort visualisation
+https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
+> shell sort wiki
+https://en.wikipedia.org/wiki/Shellsort
+![shell sort](https://cdn.otus.ru/media/private/0c/fc/ShellSort-19350-0cfcbd.png?hash=dPJP6oekzuV2k00qNxYcJw&expires=1677107092)
 
 
 
