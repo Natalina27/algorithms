@@ -1,4 +1,6 @@
-// O(N)/O(N^2)
+import {createRandomArray} from '../utils.js';
+
+// O(N)-O(N^2)/O(1)
 const bubbleSort = (array) => {
   const N = array.length;
   let isSorted = false;
@@ -19,7 +21,7 @@ const bubbleSort = (array) => {
   console.log(`asg ${N}`, asg);
   return array;
 }
-const createRandomArray = n => Array.from({length: n}, () => Math.floor(Math.random() * n));
+
 const array10 = createRandomArray(10);
 const array100 = createRandomArray(100);
 const array1000 = createRandomArray(1000);

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "## Lesson objectives test programs written in this course: solve combinatorial problems by enumeration; use recursion to generate options",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
