@@ -1,4 +1,4 @@
-# 1.Loops_and_Recursion
+# 1. Loops_and_Recursion
 
 ## Lesson objectives
 test programs written in this course:
@@ -17,7 +17,7 @@ rules and features of creating recursive algorithms.
 2.  Algorithm Complexity Estimation
 - Ability to determine complexity classes of algorithms
 
-# 2.Unit tests
+# 2. Unit tests
 
 ## Lesson objectives
 independently check the completed homework according to the prepared tests
@@ -103,7 +103,29 @@ Applying bit operations to solve problems
 - Comparison of complexity of algorithms
 - Analysis of algorithms by criteria
 
-## Useful links:
+# 7. Pyramid sort
+
+## Lesson objectives
+- write a selection sort algorithm;
+- explain how heap sort works;
+- compare its advantages and disadvantages;
+- implement the heap sort algorithm.
+
+## Summary
+- selection sort algorithm and its features;
+- a detailed explanation of the heapsort algorithm;
+- properties, complexity and features of this algorithm;
+- visualization of the sorting process.
+
+## Competencies
+Creating an algorithm for sorting an array
+- Algorithm complexity estimation
+- Comparison of complexity of algorithms
+- Analysis of algorithms by criteria
+- Use of heap data structure and binary tree
+- Using recursion
+
+# Useful links:
 > Сложность алгоритма Евклида
 https://cdn.otus.ru/media/private/ec/f4/%D0%A1%D0%BB%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B0_%D0%95%D0%B2%D0%BA%D0%BB%D0%B8%D0%B4%D0%B0_%D0%9D%D0%9E%D0%94-19350-ecf466.png?hash=kyokQWDyiVJgicnpGZDg-w&expires=1675995474
 
@@ -125,6 +147,9 @@ https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 > shell sort wiki
 https://en.wikipedia.org/wiki/Shellsort
 ![shell sort](https://cdn.otus.ru/media/private/0c/fc/ShellSort-19350-0cfcbd.png?hash=dPJP6oekzuV2k00qNxYcJw&expires=1677107092)
+
+
+
 
 
 
