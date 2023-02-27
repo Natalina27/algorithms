@@ -125,6 +125,27 @@ Creating an algorithm for sorting an array
 - Use of heap data structure and binary tree
 - Using recursion
 
+# 8. Quick and external sort
+
+## Lesson objectives
+- implement quick sorting algorithm quick sort;
+- implement merge sort algorithm merge sort;
+- sort a billion numbers without loading them all into memory.
+
+## Summary
+- step-by-step creation of a quick sort algorithm;
+- creating a merge sort algorithm;
+- external file sorting based on merge sort;
+- timsort hybrid sorting algorithm idea.
+## Competencies
+- Creating an algorithm for sorting an array
+- Algorithm complexity estimation
+- Comparison of complexity of algorithms
+- Analysis of algorithms by criteria
+- Use of heap data structure and binary tree
+- Using recursion
+- Using the principle of "divide and conquer"
+
 # Useful links:
 > Сложность алгоритма Евклида
 https://cdn.otus.ru/media/private/ec/f4/%D0%A1%D0%BB%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B0_%D0%95%D0%B2%D0%BA%D0%BB%D0%B8%D0%B4%D0%B0_%D0%9D%D0%9E%D0%94-19350-ecf466.png?hash=kyokQWDyiVJgicnpGZDg-w&expires=1675995474
@@ -144,9 +165,28 @@ https://gekomad.github.io/Cinnamon/BitboardCalculator/
 > Comparison sort visualisation
 https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
-> shell sort wiki
+> Selection sort
+https://habr.com/ru/post/422085/
+
+> Shell sort wiki
 https://en.wikipedia.org/wiki/Shellsort
 ![shell sort](https://cdn.otus.ru/media/private/0c/fc/ShellSort-19350-0cfcbd.png?hash=dPJP6oekzuV2k00qNxYcJw&expires=1677107092)
+
+> Merge sort
+https://www.geeksforgeeks.org/merge-sort/
+
+> Quick sort
+https://www.geeksforgeeks.org/quick-sort/
+
+> Heap sort
+https://www.cs.usfca.edu/~galles/visualization/HeapSort.html
+https://habr.com/ru/company/otus/blog/552018/
+
+> External sort
+https://present5.com/algoritmy-vneshnej-sortirovki-lekciya-4-1-algoritmy/
+
+> Tim sort
+https://ru.wikipedia.org/wiki/Timsort
 
 > Sorting Algorithms Animations
 https://www.toptal.com/developers/sorting-algorithms
