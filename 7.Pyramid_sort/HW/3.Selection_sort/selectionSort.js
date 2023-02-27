@@ -15,7 +15,9 @@ function selectionSort(array) {
       }
     }
     asg += 3;
-    [array[i], array[min_idx]] = [array[min_idx], array[i]]
+    if(i !== min_idx){
+      [array[i], array[min_idx]] = [array[min_idx], array[i]];
+    }
   }
   console.log(`cmp ${N}`, cmp);
   console.log(`asg ${N}`, asg);
