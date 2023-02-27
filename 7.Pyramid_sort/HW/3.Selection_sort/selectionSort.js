@@ -6,7 +6,7 @@ function selectionSort(array) {
   let cmp = 0;
   let asg = 0;
 
-  for (let i = 0; i < N - 1; i++) {
+  for (let i = 0; i < N; i++) {
     let min_idx = i;
 
     for (let j = i + 1; j < N; j++) {
@@ -14,8 +14,11 @@ function selectionSort(array) {
         min_idx = j;
       }
     }
-    asg += 3;
-    [array[i], array[min_idx]] = [array[min_idx], array[i]]
+
+    if(i !== min_idx){
+      asg += 3;
+      [array[i], array[min_idx]] = [array[min_idx], array[i]];
+    }
   }
   console.log(`cmp ${N}`, cmp);
   console.log(`asg ${N}`, asg);
