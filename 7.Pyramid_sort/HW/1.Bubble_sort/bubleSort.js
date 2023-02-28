@@ -1,4 +1,4 @@
-import {createRandomArray} from '../utils.js';
+import {array10, array100, array1000, array10000,array100000} from '../utils.js';
 
 // O(N)-O(N^2)/O(1)
 const bubbleSort = (array) => {
@@ -21,12 +21,6 @@ const bubbleSort = (array) => {
   console.log(`asg ${N}`, asg);
   return array;
 }
-
-const array10 = createRandomArray(10);
-const array100 = createRandomArray(100);
-const array1000 = createRandomArray(1000);
-const array10000 = createRandomArray(10000);
-const array100000 = createRandomArray(100000);
 
 console.log('array10', bubbleSort(array10));
 console.log('array100', bubbleSort(array100));
