@@ -1,6 +1,6 @@
 import {array10, array100, array1000, array10000,array100000} from '../utils.js';
 
-//O(n^2)/O(1)
+//O(N)-O(N^2)/O(1)
 function insertionSort(array) {
   const N = array.length;
   let cmp = 0;
