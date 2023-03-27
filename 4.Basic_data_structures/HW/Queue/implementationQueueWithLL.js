@@ -5,29 +5,29 @@ class Node {
   }
 }
 
-class Stack {
+class Queue {
   constructor(){
     this.first = null;
     this.last = null;
     this.size = 0;
   }
-  push(val){
+  enqueue(val){
     const newNode = new Node(val);
     if(!this.first){
       this.first = newNode;
       this.last = newNode;
     } else {
-      let temp = this.first;
-      this.first = newNode;
-      this.first.next = temp;
+      this.last.next = newNode;
+      this.last = newNode;
     }
     return ++this.size;
   }
 
-  pop(){
+  dequeue(){
     if(!this.first) return null;
+
     let temp = this.first;
-    if(this.first === this.last){
+    if(this.first === this.last) {
       this.last = null;
     }
     this.first = this.first.next;
@@ -43,7 +43,7 @@ class Stack {
     return this.size === 0;
   }
 
-  printStack(){
+  printQueue(){
     let str = "";
 
     let current = this.first;
@@ -55,20 +55,20 @@ class Stack {
   }
 }
 
-const stackLL = new Stack();
-console.log('stack', stackLL);
-console.log('isEmpty', stackLL.isEmpty());
+const queueLL = new Queue();
+console.log('queue', queueLL);
+console.log('isEmpty', queueLL.isEmpty());
 
-stackLL.push(1);
-stackLL.push(2);
-stackLL.push(3);
-stackLL.push(4);
-stackLL.push(5);
-console.log('stack after push', stackLL.printStack());
+queueLL.enqueue(1);
+queueLL.enqueue(2);
+queueLL.enqueue(3);
+queueLL.enqueue(4);
+queueLL.enqueue(5);
+console.log('queue after enqueue', queueLL.printQueue());
 
-stackLL.pop();
-console.log('stack after pop', stackLL.printStack());
+queueLL.dequeue();
+console.log('queue after dequeue', queueLL.printQueue());
 
-console.log('peeked item', stackLL.peek());
-console.log('isEmpty', stackLL.isEmpty());
-console.log(stackLL.printStack());
+console.log('peeked item', queueLL.peek());
+console.log('isEmpty', queueLL.isEmpty());
+console.log(queueLL.printQueue());
