@@ -147,6 +147,9 @@ Creating an algorithm for sorting an array
 - Using the principle of "divide and conquer"
 
 # Useful links:
+> Big O cheatsheet
+https://www.bigocheatsheet.com/
+
 > Сложность алгоритма Евклида
 https://cdn.otus.ru/media/private/ec/f4/%D0%A1%D0%BB%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B0_%D0%95%D0%B2%D0%BA%D0%BB%D0%B8%D0%B4%D0%B0_%D0%9D%D0%9E%D0%94-19350-ecf466.png?hash=kyokQWDyiVJgicnpGZDg-w&expires=1675995474
 
