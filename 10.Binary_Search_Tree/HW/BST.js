@@ -40,6 +40,42 @@ class BinarySearchTree {
 
   }
 
+//if found return node, if not found return undefined;
+  search(value){
+    if(!this.root) return false;
+    let current = this.root;
+    let found = false;
+    while(current && !found){
+      if(value < current.value){
+        current = current.left;
+      }else if(value > current.value){
+        current = current.right;
+      }else{
+        found = true;
+      }
+    }
+    if(!found) return undefined;
+    return current;
+  }
+
+  remove(){}
+
+  smallLeftRotation(){}
+
+  smallRightRotation(){}
+
+  bigLeftRotation(){}
+
+  bigRightRotation(){}
+
+  rebalance(){
+
+  }
+
+  merge(){}
+
+  split(){}
+
 }
 
 const bsTree = new BinarySearchTree();
@@ -63,3 +99,7 @@ console.log('bsTree.root.right', bsTree.root.right);
 //        10
 //    6       15
 //  3   8  13    20
+console.log('search 10',bsTree.search(10));
+console.log('search 20',bsTree.search(20));
+console.log(bsTree.search(30)); //undefined
+
