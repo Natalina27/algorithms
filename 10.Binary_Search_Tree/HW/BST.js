@@ -11,6 +11,7 @@ class BinarySearchTree {
     this.root = null;
   }
 
+//O(log N)
   insert(value){
     const newNode = new Node(value);
     if(!this.root){
@@ -40,7 +41,7 @@ class BinarySearchTree {
 
   }
 
-//if found return node, if not found return undefined;
+//if found return node, if not found return undefined; O(log N)
   search(value){
     if(!this.root) return false;
     let current = this.root;
@@ -58,7 +59,49 @@ class BinarySearchTree {
     return current;
   }
 
-  remove(){}
+  remove(value) {
+    this.root = this.removeNode(this.root, value);
+    return this;
+  }
+
+  removeNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+    if (value < root.value) {
+      root.left = this.removeNode(root.left, value);
+    } else if (value > root.value) {
+      root.right = this.removeNode(root.right, value);
+    } else {
+      if (!root.left && !root.right) {
+        return null;
+      }
+      if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+      root.value = this.min(root.right);
+      root.right = this.removeNode(root.right, root.value);
+    }
+    return root;
+  }
+
+  min(root) {
+    if (!root.left) {
+      return root.value;
+    } else {
+      return this.min(root.left);
+    }
+  }
+
+  max(root) {
+    if (!root.right) {
+      return root.value;
+    } else {
+      return this.max(root.right);
+    }
+  }
 
   smallLeftRotation(){}
 
@@ -75,6 +118,18 @@ class BinarySearchTree {
   merge(){}
 
   split(){}
+
+  printLevel(node, level) {
+    if (!node) {
+      return;
+    }
+    if (level === 1) {
+      console.log(`${node.value} `);
+    } else if (level > 1) {
+      this.printLevel(node.left, level - 1);
+      this.printLevel(node.right, level - 1);
+    }
+  }
 
 }
 
@@ -102,4 +157,14 @@ console.log('bsTree.root.right', bsTree.root.right);
 console.log('search 10',bsTree.search(10));
 console.log('search 20',bsTree.search(20));
 console.log(bsTree.search(30)); //undefined
+
+console.log('remove 20',bsTree.remove(20));
+console.log('remove 6',bsTree.remove(6));
+
+//        10
+//    8       15
+//  3     13
+bsTree.printLevel(bsTree.root, 1);
+bsTree.printLevel(bsTree.root, 2);
+bsTree.printLevel(bsTree.root, 3);
 
