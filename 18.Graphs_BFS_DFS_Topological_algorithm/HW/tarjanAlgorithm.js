@@ -38,10 +38,10 @@ class Graph {
     if (low[u] === disc[u]) {
       while (w !== u) {
         w = st.pop();
-        document.write(w + " ");
+        console.log(w + " ");
         stackMember[w] = false;
       }
-      document.write("<br>");
+      console.log("<br>");
     }
   }
 
@@ -71,14 +71,14 @@ g1.addEdge(0, 2);
 g1.addEdge(2, 1);
 g1.addEdge(0, 3);
 g1.addEdge(3, 4);
-document.write("SSC in first graph <br>");
+console.log("SSC in first graph <br>");
 g1.SCC();
 
 let g2 = new Graph(4);
 g2.addEdge(0, 1);
 g2.addEdge(1, 2);
 g2.addEdge(2, 3);
-document.write("\nSSC in second graph<br> ");
+console.log("\nSSC in second graph<br> ");
 g2.SCC();
 
 let g3 = new Graph(7);
@@ -90,7 +90,7 @@ g3.addEdge(1, 4);
 g3.addEdge(1, 6);
 g3.addEdge(3, 5);
 g3.addEdge(4, 5);
-document.write("\nSSC in third graph <br>");
+console.log("\nSSC in third graph <br>");
 g3.SCC();
 
 let g4 = new Graph(11);
