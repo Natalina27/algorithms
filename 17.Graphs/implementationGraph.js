@@ -1,4 +1,4 @@
-class Graph{
+export class Graph{
   constructor(){
     this.adjacencyList = {};
   }
@@ -8,18 +8,28 @@ class Graph{
     }
   }
 
-  addEdge(v1,v2){
-    this.adjacencyList[v1].push(v2);
-    this.adjacencyList[v2].push(v1);
+  addEdge(v1,v2, weight){
+    if(weight){
+      this.adjacencyList[v1][v2] = weight;
+      this.adjacencyList[v2][v1] = weight;
+    }else{
+      this.adjacencyList[v1].push(v2);
+      this.adjacencyList[v2].push(v1);
+    }
+
   }
 
   removeEdge(v1,v2){
-    
-
+    this.adjacencyList[v1] = this.adjacencyList[v1].filter(v => v !== v2);
+    this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1);
   }
 
-  removeVertex(){
-
+  removeVertex(vertex){
+    const edges = this.adjacencyList[vertex];
+    if(edges){
+      edges.forEach(e => this.removeEdge(e, vertex));
+      delete this.adjacencyList[vertex];
+    }
   }
 }
 
@@ -33,6 +43,7 @@ graph.addEdge(10,13);
 graph.addEdge(10,22);
 graph.addEdge(10,27);
 graph.addEdge(10,33);
+
 console.log('graph', graph);
 //  27      33
 //    \     /
@@ -49,6 +60,7 @@ console.log('graph', graph);
 33: [10],
 }
  */
+graph.removeEdge(10,33);
 //remove edge 10-33
 //  27
 //    \
@@ -65,7 +77,8 @@ console.log('graph', graph);
 }
  */
 // add vertex 55 and edge 22-55
-
+graph.addVertex(55);
+graph.addEdge(22,55);
 //  27
 //    \
 //       10
@@ -83,4 +96,6 @@ console.log('graph', graph);
  */
 
 //remove vertex 22
+graph.removeVertex(22);
+
 
