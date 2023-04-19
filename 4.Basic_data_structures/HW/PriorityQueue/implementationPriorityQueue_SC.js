@@ -1,4 +1,4 @@
-class PriorityQueue {
+export class PriorityQueue {
     constructor(){
         this.values = [];
     }
@@ -47,7 +47,7 @@ class PriorityQueue {
             if(rightChildIdx < length){
                 rightChild = this.values[rightChildIdx];
                 if(
-                    (swap === null && rightChild.priority < element.priority) || 
+                    (swap === null && rightChild.priority < element.priority) ||
                     (swap !== null && rightChild.priority < leftChild.priority)
                 ) {
                    swap = rightChildIdx;
