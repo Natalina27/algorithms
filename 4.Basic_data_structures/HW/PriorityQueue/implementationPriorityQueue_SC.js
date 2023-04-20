@@ -59,6 +59,9 @@ export class PriorityQueue {
             idx = swap;
         }
     }
+    isEmpty(){
+        return this.values.length === 0;
+    }
 }
 
 class Node {

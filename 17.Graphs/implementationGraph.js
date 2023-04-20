@@ -1,10 +1,12 @@
 export class Graph{
   constructor(){
     this.adjacencyList = {};
+    this.vertices = [];
   }
   addVertex(vertex){
     if(!this.adjacencyList[vertex]) {
       this.adjacencyList[vertex] = [];
+      this.vertices.push(vertex);
     }
   }
 
