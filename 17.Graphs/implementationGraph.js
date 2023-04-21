@@ -1,21 +1,23 @@
 export class Graph{
-  constructor(){
+  constructor() {
     this.adjacencyList = {};
     this.vertices = [];
   }
-  addVertex(vertex){
+  addVertex(vertex) {
     if(!this.adjacencyList[vertex]) {
       this.adjacencyList[vertex] = [];
       this.vertices.push(vertex);
     }
   }
 
-  addEdge(v1,v2, weight){
+  addEdge(v1,v2,dir, weight) {
     if(weight){
       // this.adjacencyList[v1][v2] = weight;
       // this.adjacencyList[v2][v1] = weight;
       this.adjacencyList[v1].push({node:v2,weight});
       this.adjacencyList[v2].push({node:v1, weight});
+    }else if(dir){
+        this.adjacencyList[v1].push(v2);
     }else{
       this.adjacencyList[v1].push(v2);
       this.adjacencyList[v2].push(v1);
@@ -23,16 +25,51 @@ export class Graph{
 
   }
 
-  removeEdge(v1,v2){
+  removeEdge(v1,v2) {
     this.adjacencyList[v1] = this.adjacencyList[v1].filter(v => v !== v2);
     this.adjacencyList[v2] = this.adjacencyList[v2].filter(v => v !== v1);
   }
 
-  removeVertex(vertex){
+  removeVertex(vertex) {
     const edges = this.adjacencyList[vertex];
     if(edges){
       edges.forEach(e => this.removeEdge(e, vertex));
       delete this.adjacencyList[vertex];
+    }
+  }
+
+  dfs(start) {
+    const result = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
+
+    (function dfs(vertex){
+      if(!vertex) return null;
+      visited[vertex] = true;
+      console.log(vertex);
+      result.push(vertex);
+      adjacencyList[vertex].forEach(neighbor => {
+        if(!visited[neighbor]){
+          return dfs(neighbor)
+        }
+      });
+    })(start);
+
+
+
+    return result;
+  }
+
+  DFSUtil(v, visited) {
+    visited[v] = true;
+    console.log(v);
+    const adj = this.adjacencyList[v];
+    if (adj) {
+      adj.forEach(i => {
+        if (!visited[i]) {
+          this.DFSUtil(i, visited);
+        }
+      });
     }
   }
 }
