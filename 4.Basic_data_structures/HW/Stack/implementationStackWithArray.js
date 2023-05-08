@@ -1,28 +1,27 @@
 export class Stack {
-  constructor()
-  {
+  constructor() {
     this.items = [];
   }
 
-  push(item){
+  push(item) {
     this.items.push(item);
   }
 
-  pop(){
+  pop() {
     return this.items.length ? this.items.pop() : "Underflow";
   }
 
-  peek(){
+  peek() {
     return this.items[this.items.length - 1];
   }
 
-  isEmpty(){
+  isEmpty() {
     return this.items.length === 0;
   }
 
-  printStack(){
+  printStack() {
     let str = "";
-    for (let i = 0; i < this.items.length; i++){
+    for (let i = 0; i < this.items.length; i++) {
       str += this.items[i] + " ";
     }
     return str;
