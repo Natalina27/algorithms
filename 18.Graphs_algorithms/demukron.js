@@ -1,144 +1,83 @@
-//directed, weighted
-class DGraph {
+class Graph {
   constructor() {
-    this.vertices = [];
-    this.adjacencyList = {};
+    this.adjList = new Map(); // Список смежности
   }
 
-  addVertex(vertex){
-    if(!this.adjacencyList[vertex]) {
-      this.adjacencyList[vertex] = {};
-    }
-    this.vertices.push(vertex);
+  addVertex(v) {
+    this.adjList.set(v, []); // Добавляем вершины к точке
   }
 
-  addEdge(v1,v2, weight){
-    this.adjacencyList[v1][v2] = weight;
+  addEdge(v1, v2) {
+    this.adjList.get(v1).push(v2); // Добавляем ребра
   }
 
-  demukronSort() {
-    const sortedVertices = [];
-    const visitedVertices = new Map();
+  demukron() {
+    let levels = [];
+    let degree = Array.from({ length: this.adjList.size }, () => 0);
 
-    for (let i = 0; i < this.vertices.length; i++) {
-      visitedVertices.set(this.vertices[i], false);
-    }
-
-    for (let i = 0; i < this.vertices.length; i++) {
-      if (!visitedVertices.get(this.vertices[i])) {
-        this.dfs(this.vertices[i], visitedVertices, sortedVertices);
+    for (const [key, value] of this.adjList) {
+      for (let i = 0; i < value.length; i++) {
+        degree[value[i]]++;
       }
     }
 
-    return sortedVertices;
-  }
+    while(true) {
+      let currentLevels = [];
+      console.log('degree', degree);
+      for (let i = 0; i < degree.length; i++) { //[0,1,1,2] //[0,0,1,2]
+        if (degree[i] === 0) {
+          currentLevels.push(i);
+          degree[i] = -1; // Помечаем вершину как посещенную
+        }
+      }
 
-  dfs(vertex, visitedVertices, sortedVertices) {
-    visitedVertices.set(vertex, true);
+      console.log('currentLevels', currentLevels);
+      if (currentLevels.length === 0) break;
 
-    const adjacencyList = this.adjacencyList[vertex];
+      levels.push(currentLevels); // [[0]]
 
-    console.log('adjacencyList', adjacencyList);
+      console.log('levels', levels);
+      for (let i = 0; i < currentLevels.length; i++) {
+        let vertex = this.adjList.get(currentLevels[i]); // [1, 2]
 
-    for (let i = 0; i < adjacencyList.length; i++) {
-      const adjacentVertex = adjacencyList[i];
-
-      if (!visitedVertices.get(adjacentVertex)) {
-        this.dfs(adjacentVertex, visitedVertices, sortedVertices);
+        for (let j = 0; j < vertex.length; j++) {
+          degree[vertex[j]]--;
+        }
       }
     }
 
-    sortedVertices.unshift(vertex);
+    console.log(degree); // Количество вхождений
+
+    return levels; // [[0], [1, 2], [3]] -> [['A'], ['B', 'C'], ['D']]
+
+
   }
 }
 
-// const demukronAlgorithm = (graph, startNode) =>{
-//   const distances = {};
-//   const parents = {};
-//   const visitedNodes = [];
-//   let negativeCycle = false;
+let graph = new Graph();
+
+graph.addVertex(0);
+graph.addVertex(1);
+graph.addVertex(2);
+graph.addVertex(3);
+
+graph.addEdge(0, 1);
+graph.addEdge(0, 2);
+graph.addEdge(1, 3);
+graph.addEdge(2, 3);
+
+graph.demukron();
+// let graph = new Graph();
 //
-//   // Initialize distances to infinity except for startNode
-//   for (let node in graph) {
-//     distances[node] = Infinity;
-//   }
-//   distances[startNode] = 0;
+// graph.addVertex('A');
+// graph.addVertex('B');
+// graph.addVertex('C');
+// graph.addVertex('D');
 //
-//   // Find shortest path from startNode to all other nodes
-//   for (let i = 0; i < Object.keys(graph).length - 1; i++) {
-//     for (let node in graph) {
-//       for (let neighbor in graph[node]) {
-//         const weight = graph[node][neighbor];
-//         const distanceFromStartToNeighbor = distances[node] + weight;
+// graph.addEdge('A', 'B');
+// graph.addEdge('A', 'C');
+// graph.addEdge('B', 'D');
+// graph.addEdge('C', 'D');
 //
-//         if (distanceFromStartToNeighbor < distances[neighbor]) {
-//           distances[neighbor] = distanceFromStartToNeighbor;
-//           parents[neighbor] = node;
-//         }
-//       }
-//     }
-//   }
-//
-//   // Check for negative cycle
-//   for (let node in graph) {
-//     for (let neighbor in graph[node]) {
-//       const weight = graph[node][neighbor];
-//       const distanceFromStartToNeighbor = distances[node] + weight;
-//
-//       if (distanceFromStartToNeighbor < distances[neighbor]) {
-//         negativeCycle = true;
-//         break;
-//       }
-//     }
-//     if (negativeCycle) break;
-//   }
-//
-//   // Build path from startNode to endNode
-//   let path = [];
-//   let currentNode = Object.keys(graph)[Object.keys(graph).length - 1];
-//   while (currentNode !== startNode) {
-//     path.unshift(currentNode);
-//     currentNode = parents[currentNode];
-//   }
-//   path.unshift(startNode);
-//
-//   return { distances, path, negativeCycle };
-// }
+// graph.demukron();
 
-
-const dGraph = new DGraph();
-dGraph.addVertex('A');
-dGraph.addVertex('B');
-dGraph.addVertex('C');
-dGraph.addVertex('D');
-dGraph.addEdge('A','B', -1);
-dGraph.addEdge('A','C', 4);
-dGraph.addEdge('B','D', 2);
-dGraph.addEdge('C','B', 3);
-dGraph.addEdge('C','D', 2);
-console.log('dGraph', dGraph);
-
-/*
-      -1        2
-A ---------> B-----> D
- \           |       ^
- 4\          |       |
-   \         |3      |2
-     \       |       |
-      v      v       |
-      C --------------
-
-
-      {
-        A: {B: -1, C: 4},
-        B: {D: 2},
-        C: {B: 3, D: 2},
-        D: {}
-      }
- */
-
-
-
-const sortedVertices = dGraph.demukronSort();
-
-console.log(sortedVertices); // Output: ["A", "B", "E", "D", "C"]
