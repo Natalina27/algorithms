@@ -1,14 +1,25 @@
 class Graph {
   constructor() {
     this.adjList = new Map();
+    this.type = 'string';
   }
 
   addVertex(v) {
-    this.adjList.set(v, []);
+    if(typeof v === 'number'){
+      this.adjList.set(String(v), []);
+      this.type = 'number'
+    }else{
+      this.adjList.set(v, []);
+    }
+
   }
 
   addEdge(v1, v2) {
-    this.adjList.get(v1).push(v2);
+    if(typeof v1 === 'number' || typeof v2 === 'number'){
+      this.adjList.get(String(v1)).push(String(v2));
+    } else {
+      this.adjList.get(v1).push(v2);
+    }
   }
 
   demukron() {
@@ -24,7 +35,7 @@ class Graph {
 
     for (const [key, value] of this.adjList) {
       for (let i = 0; i < value.length; i++) {
-        const res = degree.find(el => Object.keys(el)[0] === String(value[i]));
+        const res = degree.find(el => Object.keys(el)[0] === value[i]);
         res[value[i]]++;
       }
     }
@@ -51,7 +62,12 @@ class Graph {
       }
     }
 
-    return levels; // [[0], [1, 2], [3]] -> [['A'], ['B', 'C'], ['D']]
+    if(this.type === 'string'){
+      return levels;  //  [['A'], ['B', 'C'], ['D']]
+    } else {
+      return levels.map(el => Array.isArray(el)? el.map(inner => Number(inner)) : Number(el)); // [[0], [1, 2], [3]]
+    }
+
   }
 }
 
