@@ -1,83 +1,110 @@
 class Graph {
   constructor() {
-    this.adjList = new Map(); // Список смежности
+    this.adjList = new Map();
   }
 
   addVertex(v) {
-    this.adjList.set(v, []); // Добавляем вершины к точке
+    this.adjList.set(v, []);
   }
 
   addEdge(v1, v2) {
-    this.adjList.get(v1).push(v2); // Добавляем ребра
+    this.adjList.get(v1).push(v2);
   }
 
   demukron() {
     let levels = [];
-    let degree = Array.from({ length: this.adjList.size }, () => 0);
+    let degree = [];
+
+    for (const [key] of this.adjList) {
+      const innerObj = {};
+      innerObj[key] = 0;
+      degree.push(innerObj);
+
+    }
 
     for (const [key, value] of this.adjList) {
       for (let i = 0; i < value.length; i++) {
-        degree[value[i]]++;
+        const res = degree.find(el => Object.keys(el)[0] === String(value[i]));
+        res[value[i]]++;
       }
     }
 
     while(true) {
       let currentLevels = [];
-      console.log('degree', degree);
-      for (let i = 0; i < degree.length; i++) { //[0,1,1,2] //[0,0,1,2]
-        if (degree[i] === 0) {
-          currentLevels.push(i);
-          degree[i] = -1; // Помечаем вершину как посещенную
+      for (let i = 0; i < degree.length; i++) {
+
+        if (Object.values(degree[i])[0] === 0) {
+          currentLevels.push(Object.keys(degree[i])[0]);
+          degree[i] = -1; // sign as visited
         }
       }
 
-      console.log('currentLevels', currentLevels);
       if (currentLevels.length === 0) break;
+      levels.push(currentLevels);
 
-      levels.push(currentLevels); // [[0]]
-
-      console.log('levels', levels);
       for (let i = 0; i < currentLevels.length; i++) {
-        let vertex = this.adjList.get(currentLevels[i]); // [1, 2]
-
+        let vertex = this.adjList.get(currentLevels[i]);
         for (let j = 0; j < vertex.length; j++) {
-          degree[vertex[j]]--;
+          const res = degree.find(el => Object.keys(el)[0] === vertex[j]);
+          res[vertex[j]]--;
         }
       }
     }
 
-    console.log(degree); // Количество вхождений
-
     return levels; // [[0], [1, 2], [3]] -> [['A'], ['B', 'C'], ['D']]
-
-
   }
 }
 
 let graph = new Graph();
 
-graph.addVertex(0);
-graph.addVertex(1);
-graph.addVertex(2);
-graph.addVertex(3);
+// graph.addVertex(0);
+// graph.addVertex(1);
+// graph.addVertex(2);
+// graph.addVertex(3);
+//
+// graph.addEdge(0, 1);
+// graph.addEdge(0, 2);
+// graph.addEdge(1, 3);
+// graph.addEdge(2, 3);
 
-graph.addEdge(0, 1);
-graph.addEdge(0, 2);
-graph.addEdge(1, 3);
-graph.addEdge(2, 3);
+/*
 
-graph.demukron();
-// let graph = new Graph();
-//
-// graph.addVertex('A');
-// graph.addVertex('B');
-// graph.addVertex('C');
-// graph.addVertex('D');
-//
-// graph.addEdge('A', 'B');
-// graph.addEdge('A', 'C');
-// graph.addEdge('B', 'D');
-// graph.addEdge('C', 'D');
-//
-// graph.demukron();
+         0
+       /    \
+      /      \
+     v        v
+     1        2
+     \        /
+      \      /
+        \   /
+          v
+          3
+*/
+
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+graph.addVertex('D');
+
+graph.addEdge('A', 'B');
+graph.addEdge('A', 'C');
+graph.addEdge('B', 'D');
+graph.addEdge('C', 'D');
+
+/*
+
+         A
+       /    \
+      /      \
+     v        v
+     B        C
+     \        /
+      \      /
+        \   /
+          v
+          D
+*/
+
+console.log(graph.demukron());
+
 
