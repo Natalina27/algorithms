@@ -21,75 +21,58 @@ The algorithm works like this:
 Used to solve problems that involve sorting elements based on their dependencies.
 This can be useful, for example, when planning a project when some tasks cannot be started until others are completed.
 */
+
 class Graph {
   constructor() {
     this.adjList = new Map();
-    this.type = 'string';
   }
 
   addVertex(v) {
-    if(typeof v === 'number'){
-      this.adjList.set(String(v), []);
-      this.type = 'number';
-    }else{
-      this.adjList.set(v, []);
-    }
-
+    this.adjList.set(v, []);
   }
 
   addEdge(v1, v2) {
-    if(typeof v1 === 'number' || typeof v2 === 'number'){
-      this.adjList.get(String(v1)).push(String(v2));
-    } else {
-      this.adjList.get(v1).push(v2);
-    }
+    this.adjList.get(v1).push(v2);
   }
 
   demukron() {
-    let levels = [];
-    let degree = [];
+    const levels = [];
+    const degree = new Map();
 
-    for (const [key] of this.adjList) {
-      const innerObj = {};
-      innerObj[key] = 0;
-      degree.push(innerObj);
+    for (const vertex of this.adjList.keys()) {
+      degree.set(vertex, 0);
     }
 
-    for (const [key, value] of this.adjList) {
-      for (let i = 0; i < value.length; i++) {
-        const res = degree.find(el => Object.keys(el)[0] === value[i]);
-        res[value[i]]++;
+    for (const [vertex, neighbors] of this.adjList) {
+      for (const neighbor of neighbors) {
+        degree.set(neighbor, degree.get(neighbor) + 1);
       }
     }
 
-    while(true) {
-      let currentLevels = [];
-      for (let i = 0; i < degree.length; i++) {
+    while (true) {
+      const currentLevels = [];
 
-        if (Object.values(degree[i])[0] === 0) {
-          currentLevels.push(Object.keys(degree[i])[0]);
-          degree[i] = -1; // sign as visited
+      for (const [vertex, vertexDegree] of degree) {
+        if (vertexDegree === 0) {
+          currentLevels.push(vertex);
+          degree.set(vertex, -1);
         }
       }
 
-      if (currentLevels.length === 0) break;
+      if (!currentLevels.length) break;
 
       levels.push(currentLevels);
 
-      for (let i = 0; i < currentLevels.length; i++) {
-        let vertex = this.adjList.get(currentLevels[i]);
-        for (let j = 0; j < vertex.length; j++) {
-          const res = degree.find(el => Object.keys(el)[0] === vertex[j]);
-          res[vertex[j]]--;
+      for (const vertex of currentLevels) {
+        let neighbors = this.adjList.get(vertex);
+
+        for (const neighbor of neighbors) {
+          degree.set(neighbor, degree.get(neighbor) - 1);
         }
       }
     }
 
-    if(this.type === 'string'){
-      return levels;  //  [['A'], ['B', 'C'], ['D']]
-    } else {
-      return levels.map(el => Array.isArray(el)? el.map(inner => Number(inner)) : Number(el)); // [[0], [1, 2], [3]]
-    }
+    return levels;
   }
 }
 
